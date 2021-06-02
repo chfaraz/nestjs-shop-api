@@ -1,0 +1,59 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type item {
+  _id: ID!
+  title: String!
+  detail: String!
+  price: Float!
+  quantity: Float!
+  userId: String!
+  user: user!
+}
+
+input ItemDto {
+  title: String!
+  detail: String!
+  price: Float!
+  quantity: Float!
+  userId: ID!
+}
+
+type Mutation {
+  createUser(UserDto: UserDto!): String!
+  createItem(ItemDto: ItemDto!): item!
+  update(id: String!, ItemDto: ItemDto!): item!
+  delete(id: String!): String
+}
+
+type Query {
+  User: [user!]!
+  oneUser(id: String!): user!
+  item: [item!]!
+  oneItem(id: String!): item!
+  findUser(password: String!, userName: String!): token!
+}
+
+type token {
+  token: String!
+}
+
+type user {
+  _id: ID!
+  firstName: String!
+  lastName: String!
+  userName: String!
+  password: String!
+  active: Boolean!
+  item: [item!]!
+}
+
+input UserDto {
+  firstName: String!
+  lastName: String!
+  userName: String!
+  password: String!
+  items: String
+  active: Boolean = false
+}
